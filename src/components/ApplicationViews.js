@@ -27,4 +27,11 @@ export const ApplicationViews = () => {
     )
 }
 
+// chapter 6 example code that isn't working
 
+            // <AnimalProvider>
+            //     <Routes>
+            //         <Route path="/" element={<Home />} />
+            //         <Route path="/animals*" element={<AnimalList />} />
+            //     </Routes>
+            // </AnimalProvider>
