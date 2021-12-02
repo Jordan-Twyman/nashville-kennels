@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from "react";
+import { EmployeeContext } from "./EmployeeeProvider";
 import { EmployeeCard } from "./EmployeeCard";
 import "./Employee.css"
-import { EmployeeContext } from "./EmployeeProvider";
+
 
 
 export const EmployeeList = () => {
