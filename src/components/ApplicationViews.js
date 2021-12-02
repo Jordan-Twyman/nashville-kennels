@@ -1,37 +1,40 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom"
 import { Home } from "./Home"
-import { LocationCard } from "./location/LocationCard"
-import { CustomerCard } from "./customer/CustomerCard"
-import { EmployeeCard } from "./employee/EmployeeCard"
 import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
-
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { CustomerList } from "./customer/CustomerList"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
+import { EmployeeList } from "./employee/EmployeeList"
+import { LocationProvider } from "./location/LocationProvider"
+import { LocationList } from "./location/LocationList"
 
 export const ApplicationViews = () => {
     return (
+        <AnimalProvider>
+        <CustomerProvider>
+        <EmployeeProvider>
+        <LocationProvider>
         <Routes>
             {/* Render the location list when http://localhost:3000/ */}
-            <Route exact path="/" element={<Home/>}/>
-                
+            <Route exact path="/" element={<Home />} />
+
             {/* Render the animal list when http://localhost:3000/animals */}
-            <Route path="/animals" element={<AnimalProvider><AnimalList /></AnimalProvider>}/>
-           
-            <Route path="/customers" element={<CustomerCard />}/>
+            <Route exact path="/animals" element={ <AnimalList />} />
+                
+            {/* Render the animal list when http://localhost:3000/customers */}
+            <Route path="/customers" element={<CustomerList />} />  
 
-            <Route path="/locations" element={<LocationCard />}/>
+            {/* Render the animal list when http://localhost:3000/employee */}
+            <Route path="/employee" element={<EmployeeList />} />
 
-            <Route path="/employees" element={<EmployeeCard />}/>
-
+            {/* Render the location list when http://localhost:3000/locations */}
+            <Route path="/locations" element={<LocationList />} />
         </Routes>
+        </LocationProvider>
+        </EmployeeProvider>
+        </CustomerProvider>
+        </AnimalProvider>
     )
 }
-
-// chapter 6 example code that isn't working
-
-            // <AnimalProvider>
-            //     <Routes>
-            //         <Route path="/" element={<Home />} />
-            //         <Route path="/animals*" element={<AnimalList />} />
-            //     </Routes>
-            // </AnimalProvider>
