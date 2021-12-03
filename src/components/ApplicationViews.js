@@ -5,11 +5,12 @@ import { AnimalProvider } from "./animal/AnimalProvider"
 import { AnimalList } from "./animal/AnimalList"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
-import { EmployeeProvider } from "./employee/EmployeeeProvider"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeList } from "./employee/EmployeeList"
 import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import { AnimalForm } from "./animal/AnimalForm"
+import { EmployeeForm } from "./employee/EmployeeForm"
 
 
 export const ApplicationViews = () => {
@@ -31,6 +32,8 @@ export const ApplicationViews = () => {
 
             {/* Render the animal list when http://localhost:3000/employees */}
             <Route path="/employees" element={<EmployeeList />} />
+            <Route path="/employees/create" element={<EmployeeForm />} />
+
 
             {/* Render the location list when http://localhost:3000/locations */}
             <Route path="/locations" element={<LocationList />} />
