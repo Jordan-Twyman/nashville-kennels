@@ -1,12 +1,14 @@
-import React, { useContext, useEffect, setState, useState } from "react";
-import { AnimalContext } from "../animal/AnimalProvider";
-import "./Animal.css";
+import React, { useContext, useState } from "react";
+import { LocationContext } from "../location/LocationProvider";
+import "./Location.css";
 import { useNavigate } from 'react-router-dom';
+// import { EmployeeContext } from "../employee/EmployeeProvider";
+
 
 
 export const LocationForm = () => {
-  const { addLocation } = useContext(AnimalContext);
-//   const { customers, getCustomers } = useContext(CustomerContext);
+  const { addLocation } = useContext(LocationContext);
+  // const { employees, getEmployees } = useContext(EmployeeContext);
 
   /*
   With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
@@ -25,9 +27,7 @@ export const LocationForm = () => {
   Reach out to the world and get customers state
   and locations state on initialization.
   */
-  useEffect(() => {
-    getLocations();
-  }, []);
+  
 
   //when a field changes, update state. The return will re-render and display based on the values in state
   //Controlled component
@@ -63,7 +63,7 @@ export const LocationForm = () => {
 
   return (
     <form className="LocationForm">
-      <h2 className="animalForm__title">New Animal</h2>
+      <h2 className="animalForm__title">New Location</h2>
       <fieldset>
         <div className="form-group">
           <label htmlFor="name">Location name:</label>
