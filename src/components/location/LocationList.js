@@ -3,10 +3,16 @@ import { LocationContext } from "./LocationProvider"
 import { LocationCard } from "./LocationCard"
 import "./Location.css"
 import { useNavigate } from "react-router"
+import { EmployeeContext } from "../employee/EmployeeProvider"
+import { AnimalContext } from "../animal/AnimalProvider"
+
 
 export const LocationList = () => {
     // This state changes when `getLocations()` is invoked below
     const { locations, getLocations } = useContext(LocationContext)
+    const { employees, getEmployees } = useContext(EmployeeContext);
+    const { getAnimals, animals } = useContext(AnimalContext)
+
     const navigate = useNavigate();
 
   
@@ -14,7 +20,8 @@ export const LocationList = () => {
     //In this case it is reaching out to the api call for locations
     useEffect(() => {
       console.log("LocationList: useEffect - getLocations")
-      getLocations()
+      getEmployees().then(getAnimals).then
+      (getLocations)
   
     }, [])
   
@@ -26,10 +33,13 @@ export const LocationList = () => {
         Add Location
       </button>
       <div className="locations">
-        {console.log("LocationList: Render", locations)}
+        {console.log("LocationList: Render", locations, employees, animals)}
         {
           locations.map(location => {
-            return <LocationCard key={location.id} location={location} />
+            const allAnimals = animals.filter(a => a.locationId === location.id)
+            const allEmployees = employees.filter(e => e.locationId === location.id)
+
+            return <LocationCard key={location.id} location={location} employees={allEmployees} animals={allAnimals} />
           })
         }
       </div>
