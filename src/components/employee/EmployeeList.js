@@ -3,19 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { EmployeeContext } from "./EmployeeProvider";
 import { EmployeeCard } from "./EmployeeCard";
 import "./Employee.css";
-import { LocationContext } from "../location/LocationProvider";
+// import { LocationContext } from "../location/LocationProvider";
 
-export const EmployeeList = () => {
+export const EmployeeList = ({ history }) => {
   // This state changes when `getAnimals()` is invoked below
   const { employees, getEmployees } = useContext(EmployeeContext);
-  const { locations, getLocations } = useContext(LocationContext);
+  // const { locations, getLocations } = useContext(LocationContext);
   const navigate = useNavigate();
 
   //useEffect - reach out to the world for something
   useEffect(() => {
-    console.log("EmployeeList: useEffect - getEmployees")
-    getLocations()
-    .then(getEmployees);
+    // console.log("EmployeeList: useEffect - getEmployees")
+    getEmployees()
+    // .then(getEmployees);
   }, []);
 
 
@@ -30,11 +30,11 @@ export const EmployeeList = () => {
         {
           employees.map(employee => {
             // const owner = customers.find(c => c.id === employeeObj.customerId);
-            const store = locations.find(l => l.id === employee.locationId);
+            // const store = locations.find(l => l.id === employee.locationId);
 
             return <EmployeeCard 
                       key={employee.id}
-                      location={store}
+                      // location={store}
                       employee={employee} />
           })
         }
