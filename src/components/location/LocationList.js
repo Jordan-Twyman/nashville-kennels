@@ -36,10 +36,10 @@ export const LocationList = () => {
         {console.log("LocationList: Render", locations, employees, animals)}
         {
           locations.map(location => {
-            const allAnimals = animals.filter(a => a.locationId === location.id)
-            const allEmployees = employees.filter(e => e.locationId === location.id)
+            const numberOfAnimals = animals.filter(a => a.locationId === location.id)
+            const numberOfEmployees = employees.filter(e => e.locationId === location.id)
 
-            return <LocationCard key={location.id} location={location} employees={allEmployees} animals={allAnimals} />
+            return <LocationCard key={location.id} location={location} employees={numberOfEmployees} animals={numberOfAnimals} />
           })
         }
       </div>
