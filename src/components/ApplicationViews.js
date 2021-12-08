@@ -31,7 +31,8 @@ export const ApplicationViews = () => {
             {/* Render the animal list when http://localhost:3000/animals */}
             <Route exact path="/animals" element={ <AnimalList />} />
             <Route path="/animals/create" element={<AnimalForm />} />
-            <Route exact path="/animals/detail/:animalId" element={<AnimalDetail />} />
+            <Route path="/animals/detail/:animalId*" element={<AnimalDetail />} />
+            <Route path="animals/edit/:animalId/*" element={<AnimalForm />} />
 
 
                 
@@ -41,7 +42,7 @@ export const ApplicationViews = () => {
             {/* Render the animal list when http://localhost:3000/employees */}
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/employees/create" element={<EmployeeForm />} />
-            <Route exact path="/employees/detail/:employeeId" element={<EmployeeDetail />} />
+            <Route path="/employees/detail/:employeeId*" element={<EmployeeDetail />} />
 
 
 

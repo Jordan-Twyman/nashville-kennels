@@ -66,7 +66,7 @@ export const AnimalList = ({ history }) => {
 
     return (
         <>
-            <h1>Animals</h1>
+            <h2>Animals</h2>
 
             <button onClick={() => navigate("/animals/create")}>
                 Make Reservation
