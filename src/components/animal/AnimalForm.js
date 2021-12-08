@@ -43,6 +43,7 @@ export const AnimalForm = () => {
           updateAnimal({
               id: animal.id,
               name: animal.name,
+              breed: animal.breed,
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
@@ -51,6 +52,7 @@ export const AnimalForm = () => {
           //POST - add
           addAnimal({
               name: animal.name,
+              breed: animal.breed,
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
@@ -88,6 +90,12 @@ export const AnimalForm = () => {
             onChange={handleControlledInputChange}
             defaultValue={animal.name}/>
           </div>
+        </fieldset>
+        <fieldset>
+        <div className="form-group">
+          <label htmlFor="animalBreed">Animal breed:</label>
+          <input type="text" id="animalBreed" name="breed" required className="form-control" placeholder="Animal breed" onChange={handleControlledInputChange} defaultvalue={animal.breed}/>
+        </div>
         </fieldset>
         <fieldset>
           <div className="form-group">
