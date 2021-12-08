@@ -50,6 +50,8 @@ export const ApplicationViews = () => {
             <Route path="/locations" element={<LocationList />} />
             <Route path="/locations/create" element={<LocationForm />} />
             <Route path="/locations/detail/:locationId" element={<LocationDetail />} />
+            <Route path="locations/edit/:locationId/*" element={<LocationForm />} />
+
 
         </Routes>
         </LocationProvider>
