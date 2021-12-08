@@ -32,7 +32,7 @@ export const ApplicationViews = () => {
             {/* Render the animal list when http://localhost:3000/animals */}
             <Route path="animals/*" element={<><AnimalSearch /><AnimalList /></>} />
             <Route path="/animals/create" element={<AnimalForm />} />
-            <Route path="/animals/detail/:animalId*" element={<AnimalDetail />} />
+            <Route path="/animals/detail/:animalId/*" element={<AnimalDetail />} />
             <Route path="animals/edit/:animalId/*" element={<AnimalForm />} />
 
 
@@ -43,15 +43,15 @@ export const ApplicationViews = () => {
             {/* Render the animal list when http://localhost:3000/employees */}
             <Route path="/employees" element={<EmployeeList />} />
             <Route path="/employees/create" element={<EmployeeForm />} />
-            <Route path="/employees/detail/:employeeId*" element={<EmployeeDetail />} />
-            <Route path="/employees/edit/:employeeId" element={<EmployeeForm />} />
+            <Route path="/employees/detail/:employeeId/*" element={<EmployeeDetail />} />
+            <Route path="/employees/edit/:employeeId/*" element={<EmployeeForm />} />
 
 
 
             {/* Render the location list when http://localhost:3000/locations */}
             <Route path="/locations" element={<LocationList />} />
             <Route path="/locations/create" element={<LocationForm />} />
-            <Route path="/locations/detail/:locationId" element={<LocationDetail />} />
+            <Route path="/locations/detail/:locationId/*" element={<LocationDetail />} />
             <Route path="locations/edit/:locationId/*" element={<LocationForm />} />
 
 

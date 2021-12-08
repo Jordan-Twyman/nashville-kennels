@@ -51,6 +51,18 @@ export const EmployeeForm = () => {
     setEmployee(newEmployee);
   }
 
+  const handleControlledInputChangeBool = (event) => {
+    /* When changing a state object or array,
+    always create a copy, make changes, and then set state.*/
+    const newEmployee = { ...employee };
+    /* Animal is an object with properties.
+    Set the property to the new value
+    using object bracket notation. */
+    newEmployee[event.target.id] = event.target.checked;
+    // update state
+    setEmployee(newEmployee);
+  }
+
   const handleClickSaveEmployee = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
 
@@ -83,28 +95,28 @@ export const EmployeeForm = () => {
       <h2 className="employeeForm__title">New Employee</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Employee name:</label>
-          <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" value={employee.name}/>
+          <label htmlFor="employeeName">Employee name:</label>
+          <input type="text" id="name" name="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" defaultValue={employee.name}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Full Time:</label>
-          <input type="checkbox" id="fullTime" name="fullTime" onChange={handleControlledInputChange} defaultvalue={employee.fullTime}
+          <label htmlFor="employeeHours">Full Time:</label>
+          <input type="checkbox" id="fullTime" name="fullTime" checked={employee.fullTime}  onChange={handleControlledInputChangeBool} value={employee.fullTime}
          unchecked/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Manager:</label>
-          <input type="checkbox" id="manager" name="manager" onChange={handleControlledInputChange} defaultvalue={employee.manager}
+          <label htmlFor="employeePosition">Manager:</label>
+          <input type="checkbox" id="manager" name="manager" checked={employee.manager}  onChange={handleControlledInputChangeBool} defaultValue={employee.manager}
          unchecked/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="name">Hourly Rate:</label>
-          <input type="number" id="hourlyRate" onChange={handleControlledInputChange} required className="form-control" placeholder="Hourly Rate" defaultvalue={employee.hourlyRate}/>
+          <label htmlFor="hourlyRate">Hourly Rate:</label>
+          <input type="number" id="hourlyRate" name="hourlyRate" onChange={handleControlledInputChange} required className="form-control" placeholder="Hourly Rate" defaultValue={employee.hourlyRate}/>
         </div>
       </fieldset>
       <fieldset>
