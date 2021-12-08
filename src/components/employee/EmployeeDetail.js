@@ -27,6 +27,7 @@ export const EmployeeDetail = () => {
         <div className="employeeHours">{employee.fullTime ? `Full Time` : "Part Time"}</div>
       {/* What's up with the question mark???? See below.*/}
       <div className="employee__location">Location: {employee.location?.name}</div>
+      <button onClick={() => {navigate(`/employees/edit/${employeeId}`)}} >Edit</button>
     </section>
   )
 }

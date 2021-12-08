@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { LocationContext } from "../location/LocationProvider";
 import { EmployeeContext } from "../employee/EmployeeProvider";
 import "./Employee.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 export const EmployeeForm = () => {
-  const { addEmployee } = useContext(EmployeeContext);
+  const { addEmployee, getEmployeeById, updateEmployee } = useContext(EmployeeContext);
   const { locations, getLocations } = useContext(LocationContext);
-
+  const { employeeId } = useParams()
   /*
   With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
   Define the intial state of the form inputs with useState()
@@ -30,7 +30,11 @@ export const EmployeeForm = () => {
   and locations state on initialization.
   */
   useEffect(() => {
-    getLocations();
+    getLocations().then(() => {
+      if (employeeId) {
+        getEmployeeById(employeeId).then(setEmployee)
+      }
+    });
   }, []);
 
   //when a field changes, update state. The return will re-render and display based on the values in state
@@ -63,6 +67,9 @@ export const EmployeeForm = () => {
 
     if (locationId === 0) {
       window.alert("Please select a location");
+    } else if (employeeId) {
+      updateEmployee(employee)
+      .then(() => navigate(`/employees/detail/${employeeId}`))
     } else {
       //invoke addAnimal passing animal as an argument.
       //once complete, change the url and display the animal list
