@@ -15,6 +15,7 @@ import { LocationForm } from "./location/LocationForm"
 import { AnimalDetail } from "./animal/AnimalDetails"
 import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { LocationDetail } from "./location/LocationDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 
 
 
@@ -29,7 +30,7 @@ export const ApplicationViews = () => {
             <Route exact path="/" element={<Home />} />
 
             {/* Render the animal list when http://localhost:3000/animals */}
-            <Route exact path="/animals" element={ <AnimalList />} />
+            <Route path="animals/*" element={<><AnimalSearch /><AnimalList /></>} />
             <Route path="/animals/create" element={<AnimalForm />} />
             <Route path="/animals/detail/:animalId*" element={<AnimalDetail />} />
             <Route path="animals/edit/:animalId/*" element={<AnimalForm />} />

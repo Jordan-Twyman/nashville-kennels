@@ -55,14 +55,26 @@ import { useNavigate } from "react-router"
 
 
 
-export const AnimalList = ({ history }) => {
-    const { getAnimals, animals } = useContext(AnimalContext)
+export const AnimalList = ({ }) => {
+    const { getAnimals, animals, searchTerms } = useContext(AnimalContext)
+    const [ filteredAnimals, setFiltered ] = useState([])
     const navigate = useNavigate()
 
-    // Initialization effect hook -> Go get animal data
-    useEffect(()=>{
+    useEffect(() => {
         getAnimals()
     }, [])
+
+    // Initialization effect hook -> Go get animal data
+    useEffect(() => {
+        if (searchTerms !== "") {
+          // If the search field is not blank, display matching animals
+          const subset = animals.filter(animal => animal.name.toLowerCase().includes(searchTerms))
+          setFiltered(subset)
+        } else {
+          // If the search field is blank, display all animals
+          setFiltered(animals)
+        }
+      }, [searchTerms, animals])
 
     return (
         <>
@@ -73,7 +85,7 @@ export const AnimalList = ({ history }) => {
             </button>
             <div className="animals">
                 {
-                    animals.map(animal => {
+                    filteredAnimals.map(animal => {
                         return <AnimalCard key={animal.id} animal={animal} />
                     })
                 }
