@@ -77,8 +77,8 @@ export const EmployeeForm = () => {
     employee.fullTime = fullTime
     
 
-    if (locationId === 0) {
-      window.alert("Please select a location");
+    if (locationId === 0 || hourlyRate === 0) {
+      window.alert("Please enter complete employee information");
     } else if (employeeId) {
       updateEmployee(employee)
       .then(() => navigate(`/employees/detail/${employeeId}`))
