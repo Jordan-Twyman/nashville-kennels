@@ -46,7 +46,7 @@ export const EmployeeForm = () => {
     /* Animal is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newEmployee[event.target.id] = event.target.value;
+    newEmployee[event.target.name] = event.target.value;
     // update state
     setEmployee(newEmployee);
   }
@@ -115,14 +115,14 @@ export const EmployeeForm = () => {
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="hourlyRate">Hourly Rate:</label>
-          <input type="number" id="hourlyRate" name="hourlyRate" onChange={handleControlledInputChange} required className="form-control" placeholder="Hourly Rate" defaultValue={employee.hourlyRate}/>
+          <label htmlFor="rate">Hourly Rate:</label>
+          <input type="number" id="rate" name="hourlyRate" onChange={handleControlledInputChange} required className="form-control" placeholder="Hourly Rate" value={employee.hourlyRate}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
           <label htmlFor="location">Assign to location: </label>
-          <select defaultValue={employee.locationId} name="locationId" id="locationId" className="form-control" onChange={handleControlledInputChange} >
+          <select value={employee.locationId} name="locationId" id="location" className="form-control" onChange={handleControlledInputChange} >
             <option value="0">Select a location</option>
             {locations.map(l => (
               <option key={l.id} value={l.id}>

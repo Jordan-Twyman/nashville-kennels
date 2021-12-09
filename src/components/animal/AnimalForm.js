@@ -33,8 +33,8 @@ export const AnimalForm = () => {
     }
 
     const handleSaveAnimal = () => {
-      if (parseInt(animal.locationId) === 0) {
-          window.alert("Please select a location")
+      if (parseInt(animal.locationId) === 0 || parseInt(animal.customerId) === 0) {
+          window.alert("Please select a location and/or customer")
       } else {
         //disable the button - no extra clicks
         setIsLoading(true);

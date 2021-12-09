@@ -16,6 +16,7 @@ export const LocationDetail = () => {
     <section className="location">
       <h3 className="location__name">{location.name}</h3>
       <address className="location__address">{location.address}</address>
+      <div>
       <h4>Employees</h4>
       {
         location.employees?.map((e, ind, arr) => ind === arr.length - 1 ? <span key={e.id}>{e.name}</span> : <span key={e.id}>{e.name}, </span>)
@@ -24,6 +25,7 @@ export const LocationDetail = () => {
       {
         location.animals?.map((a, ind, arr) => ind === arr.length - 1 ? <span key={a.id}>{a.name}</span> : <span key={a.id}>{a.name}, </span>)
       }
+      </div>
       <button onClick={() => navigate(`/locations/edit/${locationId}`)} >Edit</button>
     </section>
   );
